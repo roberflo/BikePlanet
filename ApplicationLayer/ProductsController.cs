@@ -32,6 +32,7 @@ namespace GFStore.Controllers
             return Ok(_productBol.GetById(id));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult CreateProduct([FromBody]ProductDto productDto)
         {
@@ -47,6 +48,14 @@ namespace GFStore.Controllers
                 // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _productBol.Delete(id);
+            return NoContent();
         }
 
 
