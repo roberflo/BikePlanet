@@ -47,7 +47,7 @@ namespace GFStore.BusinessLogicLayer
             if (string.IsNullOrWhiteSpace(userDto.Password))
                 throw new AppException("Password is required");
 
-            if (_userRepository.validateTaken(userDto.Username))
+            if (_userRepository.UsernameExist(userDto.Username))
                 throw new AppException("Username \"" + userDto.Username + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
@@ -64,6 +64,28 @@ namespace GFStore.BusinessLogicLayer
         public void Delete(int id)
         {
             _userRepository.Delete(id);
+        }
+
+        public AuthenticatedUserResponse Authenticate(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                return null;
+
+            var user = _userRepository.GetByUsername(username);
+
+            if (user == null) return null;
+
+            // check if password is correct
+            if (!_authenticationHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                return null;
+
+            // authentication successfull
+           string Token = _authenticationHelper.AuthenticationToken(user);
+
+            //Map
+            AuthenticatedUserResponse authenticatedUser = _mapper.Map<AuthenticatedUserResponse>((user));
+            authenticatedUser.Token = Token;
+            return authenticatedUser;
         }
     }
 }

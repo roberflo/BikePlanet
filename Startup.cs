@@ -105,7 +105,6 @@ namespace GFStore
             services.AddScoped<IUserBol, UserBol>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

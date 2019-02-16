@@ -21,6 +21,9 @@ namespace GFStore.Utils
 
 
             //Domain to DTO
+            CreateMap<User, AuthenticatedUserResponse>()
+                .ForMember(x => x.Password, opt => opt.Ignore())
+                .ForMember(x => x.Token, opt => opt.Ignore());
             CreateMap<User, UserCreatedResponse>()
                 .ForMember(x => x.Password, opt => opt.Ignore());
             CreateMap<User, UserDto>()

@@ -10,11 +10,14 @@ namespace GFShop.DataAccessLayer.Repositories.Interfaces
     {
 
         IEnumerable<User> GetAll();
-        bool validateTaken(string username);
+        
         User GetById(int id);
         User Create(User user);
         void Update(User user);
         void Delete(int id);
+
+        User GetByUsername(string username);
+        bool UsernameExist(string username);
 
     }
 }

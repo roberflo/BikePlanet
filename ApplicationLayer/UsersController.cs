@@ -48,5 +48,35 @@ namespace GFStore.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        [Authorize]
+        [HttpPost("Admin")]
+        public IActionResult RegisterAdmin([FromBody]UserDto userDto)
+        {
+
+            try
+            {
+                // save 
+
+                return Ok(_userBol.CreateUser(userDto));
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate([FromBody]UserDto userDto)
+        {
+            var user = _userBol.Authenticate(userDto.Username, userDto.Password);
+
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(user);
+        }
     }
 }
