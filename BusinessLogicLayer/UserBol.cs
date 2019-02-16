@@ -43,21 +43,15 @@ namespace GFStore.BusinessLogicLayer
 
         public UserCreatedResponse CreateUser(UserDto userDto)
         {
-            // validation
-            if (string.IsNullOrWhiteSpace(userDto.Password))
-                throw new AppException("Password is required");
-
-            if (_userRepository.UsernameExist(userDto.Username))
-                throw new AppException("Username \"" + userDto.Username + "\" is already taken");
-
-            byte[] passwordHash, passwordSalt;
-            _authenticationHelper.CreatePasswordHash(userDto.Password, out passwordHash, out passwordSalt);
-
-            var user = _mapper.Map<User>(userDto);
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+            User user = ValidateNewUser(userDto);
             user.Role = "User";
+            return _mapper.Map<UserCreatedResponse>( _userRepository.Create(user));
+        }
 
+        public UserCreatedResponse CreateAdmin(UserDto userDto)
+        {
+            User user = ValidateNewUser(userDto);
+            user.Role = "Admin";
             return _mapper.Map<UserCreatedResponse>( _userRepository.Create(user));
         }
 
@@ -86,6 +80,24 @@ namespace GFStore.BusinessLogicLayer
             AuthenticatedUserResponse authenticatedUser = _mapper.Map<AuthenticatedUserResponse>((user));
             authenticatedUser.Token = Token;
             return authenticatedUser;
+        }
+
+        internal User ValidateNewUser(UserDto userDto){
+            // validation
+            if (string.IsNullOrWhiteSpace(userDto.Password))
+                throw new AppException("Password is required");
+
+            if (_userRepository.UsernameExist(userDto.Username))
+                throw new AppException("Username \"" + userDto.Username + "\" is already taken");
+
+            byte[] passwordHash, passwordSalt;
+            _authenticationHelper.CreatePasswordHash(userDto.Password, out passwordHash, out passwordSalt);
+
+            var user = _mapper.Map<User>(userDto);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            return user;
         }
     }
 }

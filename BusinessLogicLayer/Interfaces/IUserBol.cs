@@ -14,6 +14,8 @@ namespace GFStore.BusinessLogicLayer.Interfaces
         UserDto GetById(int id);
 
         UserCreatedResponse CreateUser(UserDto user);
+
+        UserCreatedResponse CreateAdmin(UserDto user);
         void Update(UserDto user, string password = null);
         void Delete(int id);
         AuthenticatedUserResponse Authenticate(string username, string password);

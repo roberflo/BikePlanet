@@ -57,8 +57,7 @@ namespace GFStore.Controllers
             try
             {
                 // save 
-
-                return Ok(_userBol.CreateUser(userDto));
+                return Ok(_userBol.CreateAdmin(userDto));
             }
             catch (AppException ex)
             {
