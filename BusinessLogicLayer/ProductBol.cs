@@ -43,6 +43,24 @@ namespace GFStore.BusinessLogicLayer
         public void Delete(int id)
         {
             
+            var product = _productRepository.GetById(id);
+            if (product==null)
+            {
+                 new AppException("Product not found, we cant delete");
+               
+            }
+            _productRepository.Delete(product);
+        }
+
+        public void UpdatePrice(double price, int id)
+        {
+             var product = _productRepository.GetById(id);
+             if (product==null)
+            {
+                 new AppException("Product not found, we cant update");       
+            }
+             product.Price = price;
+             _productRepository.Update(product);
         }
     }
 }

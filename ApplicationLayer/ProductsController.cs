@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using GFShop.ApplicationLayer.Dto.Request.Products;
 using GFShop.Helpers;
 using GFStore.ApplicationLayer.Dto;
 using GFStore.BusinessLogicLayer.Interfaces;
@@ -54,10 +55,36 @@ namespace GFStore.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _productBol.Delete(id);
-            return NoContent();
+           
+            try
+            {
+                 _productBol.Delete(id);
+                 return NoContent();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return NotFound(new { message = ex.Message });
+            }
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpPatch("{id}")]
+        public IActionResult UpdatePrice([FromBody] ChangePricePatchRequest request, int id)
+        {
+            
+            try
+            {
+
+                 _productBol.UpdatePrice(request.Price, id);
+                 return NoContent();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return NotFound(new { message = ex.Message });
+            }
+        }
 
 
         

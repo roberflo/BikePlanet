@@ -14,7 +14,7 @@ namespace GFShop.DataAccessLayer.Repositories.Interfaces
         Product GetById(int id);
         Product Create(Product product);
         void Update(Product product);
-        void Delete(int id);
+        void Delete(Product product);
 
 
     }

@@ -16,5 +16,7 @@ namespace GFStore.BusinessLogicLayer.Interfaces
 
         ProductDto Create(ProductDto product);
         void Delete(int id);
+
+        void UpdatePrice(double price, int id);
     }
 }
