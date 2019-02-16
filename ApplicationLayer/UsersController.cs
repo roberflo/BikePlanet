@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using GFShop.Helpers;
+using GFStore.ApplicationLayer.Dto;
 using GFStore.BusinessLogicLayer.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GFStore.Controllers
@@ -31,6 +31,22 @@ namespace GFStore.Controllers
             return Ok(_userBol.GetById(id));
         }
 
-        
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult RegisterUser([FromBody]UserDto userDto)
+        {
+            
+            try
+            {
+                // save 
+
+                return Ok(_userBol.CreateUser(userDto));
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
 }
