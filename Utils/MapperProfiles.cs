@@ -19,7 +19,8 @@ namespace GFStore.Utils
                 .ForMember(x => x.PasswordSalt, opt => opt.Ignore())
                 .ForMember(x => x.Role, opt => opt.Ignore());
 
-
+            CreateMap<ProductDto, Product>();
+            
             //Domain to DTO
             CreateMap<User, AuthenticatedUserResponse>()
                 .ForMember(x => x.Password, opt => opt.Ignore())
@@ -29,6 +30,7 @@ namespace GFStore.Utils
             CreateMap<User, UserDto>()
                  .ForMember(x => x.Password, opt => opt.Ignore());
 
+            CreateMap<Product, ProductDto>();
         }
 
         
