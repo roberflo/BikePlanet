@@ -33,7 +33,7 @@ namespace GFShop.DataAccessLayer.Repositories
             }
         }
 
-        public bool validateTaken(string username)
+        public bool UsernameExist(string username)
         {
             
             if(_context.Users.Where(s => s.Username == username).SingleOrDefault() != null)
@@ -51,6 +51,11 @@ namespace GFShop.DataAccessLayer.Repositories
         public User GetById(int id)
         {
             return _context.Users.Find(id);
+        }
+
+        public User GetByUsername(string username)
+        {
+            return _context.Users.SingleOrDefault(x => x.Username == username);
         }
 
         public void Update(User user)

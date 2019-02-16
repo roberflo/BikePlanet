@@ -43,11 +43,51 @@ namespace GFStore.BusinessLogicLayer
 
         public UserCreatedResponse CreateUser(UserDto userDto)
         {
+            User user = ValidateNewUser(userDto);
+            user.Role = "User";
+            return _mapper.Map<UserCreatedResponse>( _userRepository.Create(user));
+        }
+
+        public UserCreatedResponse CreateAdmin(UserDto userDto)
+        {
+            User user = ValidateNewUser(userDto);
+            user.Role = "Admin";
+            return _mapper.Map<UserCreatedResponse>( _userRepository.Create(user));
+        }
+
+        public void Delete(int id)
+        {
+            _userRepository.Delete(id);
+        }
+
+        public AuthenticatedUserResponse Authenticate(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                return null;
+
+            var user = _userRepository.GetByUsername(username);
+
+            if (user == null) return null;
+
+            // check if password is correct
+            if (!_authenticationHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                return null;
+
+            // authentication successfull
+           string Token = _authenticationHelper.AuthenticationToken(user);
+
+            //Map
+            AuthenticatedUserResponse authenticatedUser = _mapper.Map<AuthenticatedUserResponse>((user));
+            authenticatedUser.Token = Token;
+            return authenticatedUser;
+        }
+
+        internal User ValidateNewUser(UserDto userDto){
             // validation
             if (string.IsNullOrWhiteSpace(userDto.Password))
                 throw new AppException("Password is required");
 
-            if (_userRepository.validateTaken(userDto.Username))
+            if (_userRepository.UsernameExist(userDto.Username))
                 throw new AppException("Username \"" + userDto.Username + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
@@ -56,14 +96,8 @@ namespace GFStore.BusinessLogicLayer
             var user = _mapper.Map<User>(userDto);
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
-            user.Role = "User";
 
-            return _mapper.Map<UserCreatedResponse>( _userRepository.Create(user));
-        }
-
-        public void Delete(int id)
-        {
-            _userRepository.Delete(id);
+            return user;
         }
     }
 }
