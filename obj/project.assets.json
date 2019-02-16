@@ -12078,11 +12078,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OMEN\\Documents\\Proyectos\\dotnet\\ApplaudoShop\\BikePlanet\\BikePlanet.csproj",
-      "projectName": "BikePlanet",
-      "projectPath": "C:\\Users\\OMEN\\Documents\\Proyectos\\dotnet\\ApplaudoShop\\BikePlanet\\BikePlanet.csproj",
+      "projectUniqueName": "C:\\Users\\OMEN\\Documents\\Proyectos\\dotnet\\ApplaudoShop\\GFShop\\GFStore.csproj",
+      "projectName": "GFStore",
+      "projectPath": "C:\\Users\\OMEN\\Documents\\Proyectos\\dotnet\\ApplaudoShop\\GFShop\\GFStore.csproj",
       "packagesPath": "C:\\Users\\OMEN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OMEN\\Documents\\Proyectos\\dotnet\\ApplaudoShop\\BikePlanet\\obj\\",
+      "outputPath": "C:\\Users\\OMEN\\Documents\\Proyectos\\dotnet\\ApplaudoShop\\GFShop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
