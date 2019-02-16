@@ -1,4 +1,5 @@
 ﻿using GFStore.ApplicationLayer.Dto;
+using GFStore.ApplicationLayer.Dto.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,11 @@ namespace GFStore.BusinessLogicLayer.Interfaces
         IEnumerable<UserDto> GetAll();
         UserDto GetById(int id);
 
-        UserDto Create(UserDto user, string password);
+        UserCreatedResponse CreateUser(UserDto user);
+
+        UserCreatedResponse CreateAdmin(UserDto user);
         void Update(UserDto user, string password = null);
         void Delete(int id);
+        AuthenticatedUserResponse Authenticate(string username, string password);
     }
 }
