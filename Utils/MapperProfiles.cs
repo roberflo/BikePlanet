@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GFShop.ApplicationLayer.Dto.Response.Products;
 using GFShop.DataAccessLayer.Entities;
 using GFStore.ApplicationLayer.Dto;
 using GFStore.ApplicationLayer.Dto.Response;
@@ -31,6 +32,7 @@ namespace GFStore.Utils
                  .ForMember(x => x.Password, opt => opt.Ignore());
 
             CreateMap<Product, ProductDto>();
+            CreateMap<Product, FullProductResponse>();
         }
 
         
