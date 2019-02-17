@@ -1,0 +1,43 @@
+2019-02-17 15:23:00.008 -06:00 [INF] Starting web host
+2019-02-17 15:23:01.679 -06:00 [INF] User profile is available. Using 'C:\Users\OMEN\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-02-17 15:23:02.985 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Users  
+2019-02-17 15:23:03.109 -06:00 [INF] Executing endpoint 'GFStore.Controllers.UsersController.Get (GFStore)'
+2019-02-17 15:23:03.130 -06:00 [INF] Route matched with {action = "Get", controller = "Users"}. Executing action GFStore.Controllers.UsersController.Get (GFStore)
+2019-02-17 15:23:03.368 -06:00 [INF] Executing action method GFStore.Controllers.UsersController.Get (GFStore) - Validation state: "Valid"
+2019-02-17 15:23:03.571 -06:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'GFStoreContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-02-17 15:23:05.196 -06:00 [INF] Executed DbCommand (245ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[FirstName], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+2019-02-17 15:23:05.241 -06:00 [INF] Executed action method GFStore.Controllers.UsersController.Get (GFStore), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1863.6940000000002ms.
+2019-02-17 15:23:05.254 -06:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[GFStore.ApplicationLayer.Dto.UserDto, GFStore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-02-17 15:23:05.326 -06:00 [INF] Executed action GFStore.Controllers.UsersController.Get (GFStore) in 2190.9476ms
+2019-02-17 15:23:05.329 -06:00 [INF] Executed endpoint 'GFStore.Controllers.UsersController.Get (GFStore)'
+2019-02-17 15:23:05.335 -06:00 [INF] Request finished in 2352.0684ms 200 application/json; charset=utf-8
+2019-02-17 15:23:13.759 -06:00 [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/Products/1/MoveInventory application/json 100
+2019-02-17 15:23:13.782 -06:00 [INF] Successfully validated the token.
+2019-02-17 15:23:13.787 -06:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'GFStoreContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-02-17 15:23:14.093 -06:00 [INF] Executed DbCommand (268ms) [Parameters=[@__get_Item_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[UserId], [e].[FirstName], [e].[LastName], [e].[PasswordHash], [e].[PasswordSalt], [e].[Role], [e].[Username]
+FROM [Users] AS [e]
+WHERE [e].[UserId] = @__get_Item_0
+2019-02-17 15:23:14.106 -06:00 [INF] Executing endpoint 'GFStore.Controllers.ProductsController.RegisterProductMove (GFStore)'
+2019-02-17 15:23:14.122 -06:00 [INF] Route matched with {action = "RegisterProductMove", controller = "Products"}. Executing action GFStore.Controllers.ProductsController.RegisterProductMove (GFStore)
+2019-02-17 15:23:14.136 -06:00 [INF] Authorization was successful.
+2019-02-17 15:23:14.172 -06:00 [INF] Executing action method GFStore.Controllers.ProductsController.RegisterProductMove (GFStore) with arguments (["GFShop.ApplicationLayer.Dto.Request.Products.InventoryMoveRequest","1"]) - Validation state: "Valid"
+2019-02-17 15:23:16.895 -06:00 [INF] Executed DbCommand (239ms) [Parameters=[@__get_Item_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[ProductId], [e].[Category], [e].[Likes], [e].[Name], [e].[Price]
+FROM [Products] AS [e]
+WHERE [e].[ProductId] = @__get_Item_0
+2019-02-17 15:23:17.467 -06:00 [INF] Executed DbCommand (242ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Inventory] ([Entry], [Exit], [MovementReference], [ProductId], [Quantity], [UnitCost])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [InventoryId]
+FROM [Inventory]
+WHERE @@ROWCOUNT = 1 AND [InventoryId] = scope_identity();
+2019-02-17 15:23:17.740 -06:00 [INF] The ADMIN id: 2 InventoryMove for product 1 with MovementReference ProviderBILL for Entry of 1
+2019-02-17 15:23:17.743 -06:00 [INF] Executed action method GFStore.Controllers.ProductsController.RegisterProductMove (GFStore), returned result Microsoft.AspNetCore.Mvc.NoContentResult in 3563.4056ms.
+2019-02-17 15:23:17.750 -06:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2019-02-17 15:23:17.752 -06:00 [INF] Executed action GFStore.Controllers.ProductsController.RegisterProductMove (GFStore) in 3626.7236000000003ms
+2019-02-17 15:23:17.753 -06:00 [INF] Executed endpoint 'GFStore.Controllers.ProductsController.RegisterProductMove (GFStore)'
+2019-02-17 15:23:17.755 -06:00 [INF] Request finished in 3996.2639ms 204 

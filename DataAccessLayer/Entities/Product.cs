@@ -18,7 +18,7 @@ namespace GFShop.DataAccessLayer.Entities
         public string Category { get; set; }
 
         [NotMapped]
-        public int Stock 
+        public int? Stock 
         {
             get { return Inventory.Sum(od => od.Quantity); }
         }

@@ -16,7 +16,6 @@ namespace GFShop.DataAccessLayer.Repositories.Interfaces
         Product Create(Product product);
         void Update(Product product);
         void Delete(Product product);
-
-
+        
     }
 }

@@ -35,10 +35,7 @@ namespace GFStore
         
         public Startup(IConfiguration configuration)
         {
-            var logConfiguration = new LoggerConfiguration()
-            .ReadFrom.Configuration(configuration);
-
-            Log.Logger = logConfiguration.CreateLogger();
+            
             Configuration = configuration;
             
         }
@@ -61,8 +58,7 @@ namespace GFStore
             services.AddSingleton(mapper);
 
             services.AddDbContext<GFStoreContext>(
-                b => b.UseLazyLoadingProxies()
-                      .UseSqlServer("Server=tcp:applaudoshop.database.windows.net,1433;Initial Catalog=ApplaudoDB;Persist Security Info=False;User ID=challenge;Password=ShopApp..;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+                b => b.UseSqlServer("Server=tcp:applaudoshop.database.windows.net,1433;Initial Catalog=ApplaudoDB;Persist Security Info=False;User ID=challenge;Password=ShopApp..;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
             
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

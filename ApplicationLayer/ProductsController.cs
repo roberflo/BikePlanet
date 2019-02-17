@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using System.Linq;
 using GFShop.ApplicationLayer.Dto.Base;
 using GFShop.ApplicationLayer.Dto.Request.Products;
 using GFShop.Helpers;
@@ -30,6 +31,8 @@ namespace GFStore.Controllers
             
             return Ok(_productBol.GetAll(productParams));
         }
+        
+        
 
         // GET api/values/5
         [HttpGet("{id}")]
@@ -83,6 +86,7 @@ namespace GFStore.Controllers
 
                  _productBol.UpdatePrice(request.Price, id);
                  _logger.LogInformation("ChangePrice", "Item {id} to Price {price} Updated", request,id);
+                
                  return NoContent();
             }
             catch (AppException ex)
@@ -118,8 +122,8 @@ namespace GFStore.Controllers
             try
             {
                  _productBol.InventoryMove(inventoryMove, id);
-                 _logger.LogInformation("InventoryMove for product {id} with MovementReference {reference} for {Entry} of {quantity}",
-                  id, inventoryMove.MovementReference, (inventoryMove.Entry)?"Entry":"Exit", inventoryMove.Quantity);
+                 _logger.LogInformation("The ADMIN id: {userId} InventoryMove for product {id} with MovementReference {reference} for {Entry} of {quantity}",
+                   GetUserId(), id, inventoryMove.MovementReference, (inventoryMove.Entry)?"Entry":"Exit", inventoryMove.Quantity);
 
                 return NoContent();
             }
@@ -131,6 +135,13 @@ namespace GFStore.Controllers
         }
 
 
-        
+
+        protected int GetUserId()
+        {
+            return int.Parse(this.User.Claims.FirstOrDefault().Value);
+        }
+
+
+
     }
 }
