@@ -62,5 +62,16 @@ namespace GFStore.BusinessLogicLayer
              product.Price = price;
              _productRepository.Update(product);
         }
+
+        public void AddLike(int id)
+        {
+            var product = _productRepository.GetById(id);
+             if (product==null)
+            {
+                 new AppException("Product not found, we cant update");       
+            }
+             product.Likes += 1;
+             _productRepository.Update(product);
+        }
     }
 }
