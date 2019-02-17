@@ -11,6 +11,7 @@ namespace GFStore.ApplicationLayer.Dto
         public string Name { get; set; }
         public double Price { get; set; }
         public int Likes { get; set; }
+        public string Category { get; set; }
 
     }
 }

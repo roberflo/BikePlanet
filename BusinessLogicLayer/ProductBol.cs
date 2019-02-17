@@ -10,6 +10,7 @@ using GFShop.Utils;
 using GFStore.Utils;
 using GFStore.ApplicationLayer.Dto.Response;
 using GFShop.ApplicationLayer.Dto.Response.Products;
+using GFShop.ApplicationLayer.Dto.Base;
 
 namespace GFStore.BusinessLogicLayer
 {
@@ -24,9 +25,9 @@ namespace GFStore.BusinessLogicLayer
             _mapper = mapper;
            
         }
-        public IEnumerable<FullProductResponse> GetAll()
+        public IEnumerable<FullProductResponse> GetAll(ProductParamsDto productParams)
         {
-            return _mapper.Map<IEnumerable<FullProductResponse>>(_productRepository.GetAll());
+            return _mapper.Map<IEnumerable<FullProductResponse>>(_productRepository.GetAll(productParams));
         }
 
         public ProductDto GetById(int id)

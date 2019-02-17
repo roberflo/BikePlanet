@@ -60,7 +60,7 @@ namespace GFStore
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddDbContext<GFStoreContext>(x => x.UseInMemoryDatabase("TestDb"));
+            services.AddDbContext<GFStoreContext>(x => x.UseSqlServer("Server=tcp:applaudoshop.database.windows.net,1433;Initial Catalog=ApplaudoDB;Persist Security Info=False;User ID=challenge;Password=ShopApp..;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper();

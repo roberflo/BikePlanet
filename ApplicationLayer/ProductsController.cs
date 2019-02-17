@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using GFShop.ApplicationLayer.Dto.Base;
 using GFShop.ApplicationLayer.Dto.Request.Products;
 using GFShop.Helpers;
 using GFStore.ApplicationLayer.Dto;
@@ -24,10 +25,10 @@ namespace GFStore.Controllers
         }
        
        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<string>> Get([FromQuery]ProductParamsDto productParams)
         {
-            _logger.LogInformation("new query to find products");
-            return Ok(_productBol.GetAll());
+            
+            return Ok(_productBol.GetAll(productParams));
         }
 
         // GET api/values/5
