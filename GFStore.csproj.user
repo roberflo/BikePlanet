@@ -5,6 +5,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>GFStore</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>TalladitaAPI - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>talladita - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
