@@ -1,5 +1,6 @@
 
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GFShop.ApplicationLayer.Dto.Base;
@@ -134,8 +135,28 @@ namespace GFStore.Controllers
             }
         }
 
+        [Authorize]
+        [HttpPost("{id}/Buy")]
+        public IActionResult BuyProduc([FromBody]BuyProductRequest inventoryMove, int id)
+        {
+            
+            try
+            {
+                 _productBol.BuyProduct(inventoryMove, id);
+                 _logger.LogInformation("PurchaseDate {date}: The user id: {userId} Buy product {id} with MovementReference {reference} to {Entry}:  {quantity} ",
+                   DateTime.Now,GetUserId(), id, inventoryMove.MovementReference,"buy", inventoryMove.Quantity);
+
+                return NoContent();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return NotFound(new { message = ex.Message });
+            }
+        }
 
 
+        //Get authorized user id
         protected int GetUserId()
         {
             return int.Parse(this.User.Claims.FirstOrDefault().Value);

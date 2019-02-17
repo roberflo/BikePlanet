@@ -1,0 +1,14 @@
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\bin\Release\netcoreapp2.2\GFStore.deps.json
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\bin\Release\netcoreapp2.2\GFStore.runtimeconfig.json
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\bin\Release\netcoreapp2.2\GFStore.runtimeconfig.dev.json
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\bin\Release\netcoreapp2.2\GFStore.dll
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\bin\Release\netcoreapp2.2\GFStore.pdb
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\obj\Release\netcoreapp2.2\GFStore.csprojAssemblyReference.cache
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\obj\Release\netcoreapp2.2\GFStore.csproj.CoreCompileInputs.cache
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\obj\Release\netcoreapp2.2\GFStore.RazorAssemblyInfo.cache
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\obj\Release\netcoreapp2.2\GFStore.RazorAssemblyInfo.cs
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\obj\Release\netcoreapp2.2\GFStore.AssemblyInfoInputs.cache
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\obj\Release\netcoreapp2.2\GFStore.AssemblyInfo.cs
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\obj\Release\netcoreapp2.2\GFStore.RazorTargetAssemblyInfo.cache
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\obj\Release\netcoreapp2.2\GFStore.dll
+C:\Users\OMEN\Documents\Proyectos\dotnet\ApplaudoShop\GFShop\obj\Release\netcoreapp2.2\GFStore.pdb

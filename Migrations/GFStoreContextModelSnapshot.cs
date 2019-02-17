@@ -52,6 +52,8 @@ namespace GFStore.Migrations
 
                     b.Property<string>("Category");
 
+                    b.Property<string>("FeaturedImage");
+
                     b.Property<int>("Likes");
 
                     b.Property<string>("Name");
