@@ -13,14 +13,16 @@ namespace GFShop.DataAccessLayer.Entities
         
         public int Quantity { get; set; }
 
-        public DateTime? LastEntry { get; set; }
-        public DateTime? LastExit { get; set; }
+         public string MovementReference { get; set; }
+        public DateTime? Entry { get; set; }
+        public DateTime? Exit { get; set; }
 
        
 
-        [ForeignKey("Product")]
-       public int ProductId { get; set; }
-        public Product Product { get; set; }
+        
+        public int ProductId { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual Product Product { get; set; }
 
 
         

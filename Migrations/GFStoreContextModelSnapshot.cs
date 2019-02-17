@@ -19,6 +19,31 @@ namespace GFStore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("GFShop.DataAccessLayer.Entities.Inventory", b =>
+                {
+                    b.Property<int>("InventoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("Entry");
+
+                    b.Property<DateTime?>("Exit");
+
+                    b.Property<string>("MovementReference");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<double>("UnitCost");
+
+                    b.HasKey("InventoryId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Inventory");
+                });
+
             modelBuilder.Entity("GFShop.DataAccessLayer.Entities.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -59,6 +84,14 @@ namespace GFStore.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("GFShop.DataAccessLayer.Entities.Inventory", b =>
+                {
+                    b.HasOne("GFShop.DataAccessLayer.Entities.Product", "Product")
+                        .WithMany("Inventory")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

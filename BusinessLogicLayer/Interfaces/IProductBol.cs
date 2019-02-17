@@ -1,4 +1,5 @@
 using GFShop.ApplicationLayer.Dto.Base;
+using GFShop.ApplicationLayer.Dto.Request.Products;
 using GFShop.ApplicationLayer.Dto.Response.Products;
 using GFStore.ApplicationLayer.Dto;
 using GFStore.ApplicationLayer.Dto.Response;
@@ -20,5 +21,6 @@ namespace GFStore.BusinessLogicLayer.Interfaces
 
         void UpdatePrice(double price, int id);
         void AddLike(int id);
+        void InventoryMove(InventoryMoveRequest inventoryMove, int ProductId);
     }
 }

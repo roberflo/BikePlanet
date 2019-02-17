@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using GFShop.ApplicationLayer.Dto.Base;
 using GFShop.DataAccessLayer.Entities;
 using GFShop.DataAccessLayer.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace GFShop.DataAccessLayer.Repositories
 {
@@ -42,24 +43,30 @@ namespace GFShop.DataAccessLayer.Repositories
 
         public IEnumerable<Product> GetAll(ProductParamsDto productParams)
         {
-             var query = _context.Products;
+            IQueryable<Product> query = _context.Products;
+
             
-            //Sort
-            if (productParams.Order_by == "ASC")
-                query.OrderBy(order => productParams.Sort_by);
-            else
-            {
-                query.OrderByDescending(order => productParams.Sort_by);
-            }
 
             //filter
             if (!string.IsNullOrWhiteSpace(productParams.Filter))
-            query.Where(filter => filter.Category == "Promotions");
-            
-            //Paging
-            query.Take(productParams.Take).Skip(productParams.Skip);
+            query = query.Where(filter => filter.Category == productParams.Filter).AsQueryable<Product>();
 
-          
+            //Sort
+            if (productParams.Order_by == "ASC")
+                query = query.OrderBy(order => productParams.Sort_by)
+                    .AsQueryable<Product>();
+            else
+            {
+                query = query.OrderByDescending(order => productParams.Sort_by)
+                    .AsQueryable<Product>();
+            }
+
+            //Paging
+            query = query.Skip(productParams.Skip).Take(productParams.Take);
+
+            //Navigation Props for Stock
+            query = query.Include(inv => inv.Inventory);
+
             return query.ToList();
         }
 

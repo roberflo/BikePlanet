@@ -17,11 +17,12 @@ namespace GFShop.DataAccessLayer.Entities
         
         public string Category { get; set; }
 
+        [NotMapped]
         public int Stock 
         {
-            get {  return Inventory.Sum(od => od.Quantity); }
+            get { return Inventory.Sum(od => od.Quantity); }
         }
 
-        public ICollection<Inventory> Inventory { get; set; }
+        public virtual ICollection<Inventory> Inventory { get; set; }
     }
 }

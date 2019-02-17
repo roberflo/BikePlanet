@@ -11,18 +11,21 @@ using GFStore.Utils;
 using GFStore.ApplicationLayer.Dto.Response;
 using GFShop.ApplicationLayer.Dto.Response.Products;
 using GFShop.ApplicationLayer.Dto.Base;
+using GFShop.ApplicationLayer.Dto.Request.Products;
 
 namespace GFStore.BusinessLogicLayer
 {
     public class ProductBol : IProductBol
     {
         private IProductRepository _productRepository { get; set; }
+         private IInventoryRepository _inventoryRepository {get; set;}
         private IMapper _mapper { get; set; }
 
-        public ProductBol(IProductRepository productRepository, IMapper mapper)
+        public ProductBol(IProductRepository productRepository, IMapper mapper, IInventoryRepository inventoryRepository)
         {
             _productRepository = productRepository;
             _mapper = mapper;
+            _inventoryRepository = inventoryRepository;
            
         }
         public IEnumerable<FullProductResponse> GetAll(ProductParamsDto productParams)
@@ -37,7 +40,7 @@ namespace GFStore.BusinessLogicLayer
 
         public ProductDto Create(ProductDto productDto)
         {
-           var product = _mapper.Map<Product>(productDto);
+            var product = _mapper.Map<Product>(productDto);
             return _mapper.Map<ProductDto>( _productRepository.Create(product));
         }
 
@@ -73,6 +76,29 @@ namespace GFStore.BusinessLogicLayer
             }
              product.Likes += 1;
              _productRepository.Update(product);
+        }
+
+        public void InventoryMove(InventoryMoveRequest inventoryMove, int ProductId)
+        {
+            var product = _productRepository.GetById(ProductId);
+             if (product==null)
+            {
+                 new AppException("Product not found, we cant made the inventory move");       
+            }
+            var Inventory = new Inventory(){
+                   ProductId = ProductId,
+                   Product = product,
+                   UnitCost = inventoryMove.UnitCost,
+                   Quantity = inventoryMove.Quantity,
+                   MovementReference = inventoryMove.MovementReference
+            };
+            if (inventoryMove.Entry)
+            {
+                Inventory.Entry = DateTime.Now;
+            }  else {
+                 Inventory.Exit = DateTime.Now;
+            }
+            _inventoryRepository.Create(Inventory);
         }
     }
 }
