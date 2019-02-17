@@ -23,14 +23,11 @@ namespace GFShop.DataAccessLayer.Repositories
             return product;
         }
 
-        public void Delete(int Id)
+        public void Delete(Product product)
         {
-            var product = _context.Products.Find(Id);
-            if (product != null)
-            {
+            
                 _context.Products.Remove(product);
-                _context.SaveChanges();
-            }
+                _context.SaveChanges();    
         }
 
         
