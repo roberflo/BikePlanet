@@ -26,7 +26,7 @@ namespace GFStore.Controllers
        [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            
+            _logger.LogInformation("new query to find products");
             return Ok(_productBol.GetAll());
         }
 
@@ -81,7 +81,25 @@ namespace GFStore.Controllers
             {
 
                  _productBol.UpdatePrice(request.Price, id);
-                 _logger.LogInformation("ChangePrice", "ChangePrice: Update product with {id} to Price {price} Updated", request,id);
+                 _logger.LogInformation("ChangePrice", "Item {id} to Price {price} Updated", request,id);
+                 return NoContent();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
+        [Authorize]
+        [HttpPost("{id}/Like")]
+        public IActionResult LikeProduct( int id)
+        {
+            
+            try
+            {
+                 _productBol.AddLike(id);
+                 _logger.LogInformation("Add Like", "Item {id} Liked", id);
                  return NoContent();
             }
             catch (AppException ex)

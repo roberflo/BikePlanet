@@ -37,6 +37,8 @@ namespace GFShop.DataAccessLayer.Repositories
             _context.SaveChanges();
         }
 
+        
+
         public IEnumerable<Product> GetAll()
         {
             return _context.Products;

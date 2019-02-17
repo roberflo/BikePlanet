@@ -18,5 +18,6 @@ namespace GFStore.BusinessLogicLayer.Interfaces
         void Delete(int id);
 
         void UpdatePrice(double price, int id);
+        void AddLike(int id);
     }
 }
