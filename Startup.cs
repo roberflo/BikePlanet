@@ -24,18 +24,26 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
+using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace GFStore
 {
-    
+
     public class Startup
     {
+        
         public Startup(IConfiguration configuration)
         {
+            var logConfiguration = new LoggerConfiguration()
+            .ReadFrom.Configuration(configuration);
+
+            Log.Logger = logConfiguration.CreateLogger();
             Configuration = configuration;
+            
         }
 
+       
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -109,7 +117,7 @@ namespace GFStore
 
             services.AddScoped<IProductBol, ProductBol>();
             services.AddScoped<IProductRepository, ProductRepository>();
-            
+
 
             //Pascal
             services.AddMvc()
@@ -117,7 +125,7 @@ namespace GFStore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             // global cors policy: Change on Production may be needed
             app.UseCors(x => x
@@ -132,9 +140,10 @@ namespace GFStore
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Secure API V1");
             });
 
-            
+           
+            loggerFactory.AddSerilog();
             app.UseMvc();
-            
+
         }
 
 
