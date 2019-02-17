@@ -75,7 +75,10 @@ namespace GFShop.DataAccessLayer.Repositories
 
         public Product GetById(int id)
         {
-             return _context.Products.Find(id);
+            IQueryable<Product> query = _context.Products;
+            //Navigation Props for Stock
+            query = query.Include(inv => inv.Inventory);
+            return query.FirstOrDefault(prod=>prod.ProductId == id);
         }
 
         

@@ -107,6 +107,25 @@ namespace GFStore.BusinessLogicLayer
             _inventoryRepository.Create(Inventory);
         }
 
-        
+        public void BuyProduct(BuyProductRequest inventoryMove, int ProductId)
+        {
+             var product = _productRepository.GetById(ProductId);
+             if (product==null)
+            {
+                 new AppException("Product not found");       
+            }
+            if(product.Stock <= 0){
+                 new AppException("Product with no actual stock, we cant register the buy move");   
+            }
+            var Inventory = new Inventory(){
+                   ProductId = ProductId,
+                   Product = product,
+                   Quantity = (inventoryMove.Quantity * -1),
+                   Exit = DateTime.Now,
+                   MovementReference = inventoryMove.MovementReference
+            };
+            _inventoryRepository.Create(Inventory);
+
+        }
     }
 }
