@@ -1,3 +1,4 @@
+using GFShop.ApplicationLayer.Dto.Base;
 using GFShop.DataAccessLayer.Entities;
 using GFStore.ApplicationLayer.Dto.Response;
 using System;
@@ -9,7 +10,7 @@ namespace GFShop.DataAccessLayer.Repositories.Interfaces
     public interface IProductRepository
     {
 
-        IEnumerable<Product> GetAll();
+        IEnumerable<Product> GetAll(ProductParamsDto productParams );
         
         Product GetById(int id);
         Product Create(Product product);

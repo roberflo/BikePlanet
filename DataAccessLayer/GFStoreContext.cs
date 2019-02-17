@@ -8,5 +8,6 @@ namespace GFShop.DataAccessLayer
         public GFStoreContext(DbContextOptions<GFStoreContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
+        public  DbSet<Inventory> Inventory { get; set; }
     }
 }

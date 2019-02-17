@@ -31,8 +31,10 @@ namespace GFStore.Utils
             CreateMap<User, UserDto>()
                  .ForMember(x => x.Password, opt => opt.Ignore());
 
-            CreateMap<Product, ProductDto>();
-            CreateMap<Product, FullProductResponse>();
+            CreateMap<Product, ProductDto>()
+                .ForMember(x => x.Stock, opt => opt.Ignore());
+            CreateMap<Product, FullProductResponse>()
+                 .ForMember(x => x.Stock, opt => opt.Condition(inv=>inv.Stock > 0));
         }
 
         

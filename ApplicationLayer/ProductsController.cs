@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using GFShop.ApplicationLayer.Dto.Base;
 using GFShop.ApplicationLayer.Dto.Request.Products;
 using GFShop.Helpers;
 using GFStore.ApplicationLayer.Dto;
@@ -24,10 +25,10 @@ namespace GFStore.Controllers
         }
        
        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<string>> Get([FromQuery]ProductParamsDto productParams)
         {
-            _logger.LogInformation("new query to find products");
-            return Ok(_productBol.GetAll());
+            
+            return Ok(_productBol.GetAll(productParams));
         }
 
         // GET api/values/5
@@ -101,6 +102,26 @@ namespace GFStore.Controllers
                  _productBol.AddLike(id);
                  _logger.LogInformation("Add Like", "Item {id} Liked", id);
                  return NoContent();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("{id}/MoveInventory")]
+        public IActionResult RegisterProductMove([FromBody]InventoryMoveRequest inventoryMove, int id)
+        {
+            
+            try
+            {
+                 _productBol.InventoryMove(inventoryMove, id);
+                 _logger.LogInformation("InventoryMove for product {id} with MovementReference {reference} for {Entry} of {quantity}",
+                  id, inventoryMove.MovementReference, (inventoryMove.Entry)?"Entry":"Exit", inventoryMove.Quantity);
+
+                return NoContent();
             }
             catch (AppException ex)
             {
