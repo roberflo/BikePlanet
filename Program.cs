@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Events;
 
 namespace GFStore
 {
@@ -15,9 +16,38 @@ namespace GFStore
     {
         public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+             .MinimumLevel.Debug()
+             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+             .Enrich.FromLogContext()
+             .WriteTo.Console()
+             .WriteTo.File(
+            "%TEMP%\\Logs\\serilog.txt",
+            fileSizeLimitBytes: 1_000_000,
+            rollOnFileSizeLimit: true,
+            shared: true,
+            flushToDiskInterval: TimeSpan.FromSeconds(1))
+             .CreateLogger();
+
+            try
+            {
+                Log.Information("Starting web host");
+                CreateWebHostBuilder(args).Build().Run();
+                
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+               
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
             
-            CreateWebHostBuilder(args).Build().Run();
         }
+
+        
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)

@@ -45,11 +45,9 @@ namespace GFShop.DataAccessLayer.Repositories
         {
             IQueryable<Product> query = _context.Products;
 
-            
-
             //filter
-            if (!string.IsNullOrWhiteSpace(productParams.Filter))
-            query = query.Where(filter => filter.Category == productParams.Filter).AsQueryable<Product>();
+            if (!string.IsNullOrWhiteSpace(productParams.Category))
+            query = query.Where(filter => filter.Category == productParams.Category).AsQueryable<Product>();
 
             //Sort
             if (productParams.Order_by == "ASC")
@@ -67,6 +65,11 @@ namespace GFShop.DataAccessLayer.Repositories
             //Navigation Props for Stock
             query = query.Include(inv => inv.Inventory);
 
+            //search
+             if (!string.IsNullOrWhiteSpace(productParams.Search))
+             query = query.Where(prod => prod.Name.Contains(productParams.Search)).AsQueryable<Product>();
+
+            
             return query.ToList();
         }
 
@@ -74,5 +77,7 @@ namespace GFShop.DataAccessLayer.Repositories
         {
              return _context.Products.Find(id);
         }
+
+        
     }
 }

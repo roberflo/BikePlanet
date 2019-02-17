@@ -12,6 +12,7 @@ using GFStore.ApplicationLayer.Dto.Response;
 using GFShop.ApplicationLayer.Dto.Response.Products;
 using GFShop.ApplicationLayer.Dto.Base;
 using GFShop.ApplicationLayer.Dto.Request.Products;
+using System.Linq;
 
 namespace GFStore.BusinessLogicLayer
 {
@@ -30,7 +31,12 @@ namespace GFStore.BusinessLogicLayer
         }
         public IEnumerable<FullProductResponse> GetAll(ProductParamsDto productParams)
         {
-            return _mapper.Map<IEnumerable<FullProductResponse>>(_productRepository.GetAll(productParams));
+            var products = _mapper.Map<IEnumerable<FullProductResponse>>(_productRepository.GetAll(productParams)); 
+            if (productParams.OnlyAvailable)
+            {
+                products = products.Cast<FullProductResponse>().ToList().Where(prod => prod.Stock > 0);
+            }
+            return products;
         }
 
         public ProductDto GetById(int id)
@@ -100,5 +106,7 @@ namespace GFStore.BusinessLogicLayer
             }
             _inventoryRepository.Create(Inventory);
         }
+
+        
     }
 }

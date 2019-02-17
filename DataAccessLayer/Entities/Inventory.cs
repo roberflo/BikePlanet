@@ -16,9 +16,6 @@ namespace GFShop.DataAccessLayer.Entities
          public string MovementReference { get; set; }
         public DateTime? Entry { get; set; }
         public DateTime? Exit { get; set; }
-
-       
-
         
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
