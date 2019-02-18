@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +33,6 @@ namespace GFStore
 
     public class Startup
     {
-        
         public Startup(IConfiguration configuration)
         {
             
@@ -141,8 +141,10 @@ namespace GFStore
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Talladita API V1");
             });
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
 
-           
             loggerFactory.AddSerilog();
             app.UseMvc();
 
