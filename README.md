@@ -25,8 +25,13 @@ You can download the postman collection
                 
   -Then on the proyect execute "dotnet ef database update"
   
+
+
+#  How to Test on february 2019
+Just download, there is a connection string with my azure database connection <)
+
+#  Happy to seed your improvements
   
   HAPPY CODING!
-
 
 
