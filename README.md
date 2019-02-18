@@ -10,4 +10,16 @@ https://github.com/roberflo/GFShopFront
 https://talladita.azurewebsites.net
 
 
+#  How to Test
+You can download the postman collection 
+-Try on the Real Deployed API 
+-Build local with migrations of the proyect changing the connection string on Startup.cs
+  `services.AddDbContext<GFStoreContext>(
+                b => b.UseSqlServer("ConecctionString"));`
+  -Then on the proyect execute "dotnet ef database update"
+  
+  
+  HAPPY CODING!
+
+
 
