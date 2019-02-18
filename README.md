@@ -33,7 +33,7 @@ Just download, there is a connection string with my azure database connection <)
 #  Trello Dashboard
 https://trello.com/b/OMwJTxyU/store-api-challenge
 
-#  Happy to seed your improvements
+#  Happy to see your improvements
   
   HAPPY CODING!
 
