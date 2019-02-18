@@ -17,8 +17,12 @@ You can download the postman collection
 
 
 -Build local with migrations of the proyect changing the connection string on Startup.cs
+
+
   `services.AddDbContext<GFStoreContext>(
                 b => b.UseSqlServer("ConecctionString"));`
+                
+                
   -Then on the proyect execute "dotnet ef database update"
   
   
