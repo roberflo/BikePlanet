@@ -1,0 +1,440 @@
+{
+	"info": {
+		"_postman_id": "a64ad345-d848-454c-ba09-a37da008a6aa",
+		"name": "TalladitaAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/Users/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTU1MDM0MDAxOSwiZXhwIjoxNTUwOTQ0ODE5LCJpYXQiOjE1NTAzNDAwMTl9.VYwEVyFN0XBKMkFaVxzpkVD_gg_1iFUIP6qppjWlBuE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FirstName\":\"Roberto\",\r\n\t\"LastName\":\"Flores\",\r\n\t\"Username\":\"roberflo\",\r\n\t\"Password\":\"123\"\r\n\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Users",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Users/authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FirstName\":\"Roberto\",\r\n\t\"LastName\":\"Flores\",\r\n\t\"Username\":\"roberflo\",\r\n\t\"Password\":\"123\"\r\n\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Users/authenticate",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Users",
+						"authenticate"
+					]
+				},
+				"description": "authenticate"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE1NTAzNDc3NzgsImV4cCI6MTU1MDk1MjU3OCwiaWF0IjoxNTUwMzQ3Nzc4fQ.-q0dGTvYVYGhjONe47iuGuDeKLsUXzkQuysEgVoJPK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \n        \"Name\": \"Wine flower dress\",\n        \"Price\": 35.5,\n        \"Likes\": 0,\n        \"FeaturedImage\": \"https://www.lulus.com/images/product/xlarge/2073772_360112.jpg\",\n        \"Category\": \"Spring\"\n       \n    }"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Users/Admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTU1MDM0NzYzNywiZXhwIjoxNTUwOTUyNDM3LCJpYXQiOjE1NTAzNDc2Mzd9.XKbAru0zYTkehmdRV30u24jgLdeuYm2kBd7NC6-Jobs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FirstName\":\"Roberto\",\r\n\t\"LastName\":\"Flores\",\r\n\t\"Username\":\"Admin\",\r\n\t\"Password\":\"123\"\r\n\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Users/Admin",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Users",
+						"Admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Products?Sort_by=Likes&Order_by=DES&Skip=1&Take=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Products"
+					],
+					"query": [
+						{
+							"key": "Sort_by",
+							"value": "Likes"
+						},
+						{
+							"key": "Order_by",
+							"value": "DES"
+						},
+						{
+							"key": "Skip",
+							"value": "1"
+						},
+						{
+							"key": "Take",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE1NTAzNDc3NzgsImV4cCI6MTU1MDk1MjU3OCwiaWF0IjoxNTUwMzQ3Nzc4fQ.-q0dGTvYVYGhjONe47iuGuDeKLsUXzkQuysEgVoJPK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Products/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Products",
+						"1"
+					]
+				},
+				"description": "Delete product 1"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products/2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE1NTAzNDc3NzgsImV4cCI6MTU1MDk1MjU3OCwiaWF0IjoxNTUwMzQ3Nzc4fQ.-q0dGTvYVYGhjONe47iuGuDeKLsUXzkQuysEgVoJPK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Price\":\"45.99\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Products/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Products",
+						"2"
+					]
+				},
+				"description": "Patch (update) the price of a product"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products/1/Like",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE1NTAzNDc3NzgsImV4cCI6MTU1MDk1MjU3OCwiaWF0IjoxNTUwMzQ3Nzc4fQ.-q0dGTvYVYGhjONe47iuGuDeKLsUXzkQuysEgVoJPK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Products/1/Like",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Products",
+						"1",
+						"Like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products/1/MoveInventory",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE1NTAzNDc3NzgsImV4cCI6MTU1MDk1MjU3OCwiaWF0IjoxNTUwMzQ3Nzc4fQ.-q0dGTvYVYGhjONe47iuGuDeKLsUXzkQuysEgVoJPK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"UnitCost\": 4.50,\r\n  \"Quantity\": 1,\r\n  \"Entry\": true,\r\n  \"MovementReference\": \"ProviderBILL\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Products/1/MoveInventory",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Products",
+						"1",
+						"MoveInventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products/Search?search=\"Dress\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Products/?search=Dress",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Products",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "Dress"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products/1/Buy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE1NTAzNDc3NzgsImV4cCI6MTU1MDk1MjU3OCwiaWF0IjoxNTUwMzQ3Nzc4fQ.-q0dGTvYVYGhjONe47iuGuDeKLsUXzkQuysEgVoJPK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Quantity\": 10,\r\n  \"MovementReference\": \"BuyWith:CreditCard:45254125411\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Products/1/Buy",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Products",
+						"1",
+						"Buy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
