@@ -6,3 +6,8 @@ documentarion on swagger
 #  Client App 
 https://github.com/roberflo/GFShopFront
 
+#  Real Deployed API 
+https://talladita.azurewebsites.net
+
+
+
