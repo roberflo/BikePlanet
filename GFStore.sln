@@ -5,6 +5,30 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GFStore", "GFStore.csproj", "{31DD4916-E9A7-4184-A301-47CA3FA47626}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Talladita", "Talladita", "{87552EFE-A947-4EBB-8F22-DED35BB64118}"
+	ProjectSection(SolutionItems) = preProject
+		..\Talladita\index.html = ..\Talladita\index.html
+		..\Talladita\login.html = ..\Talladita\login.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{F5EF6C82-6E24-4DBD-8297-FAABEC46FE4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{B6658D0B-22C3-4FF9-B722-B511E2C1B5A2}"
+	ProjectSection(SolutionItems) = preProject
+		..\Talladita\assets\css\bulma.css = ..\Talladita\assets\css\bulma.css
+		..\Talladita\assets\css\login.css = ..\Talladita\assets\css\login.css
+		..\Talladita\assets\css\styles.css = ..\Talladita\assets\css\styles.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{0D0AAAF6-CEAC-4BBB-A7AD-CF41F723FCF8}"
+	ProjectSection(SolutionItems) = preProject
+		..\Talladita\assets\images\blusa1.jpg = ..\Talladita\assets\images\blusa1.jpg
+		..\Talladita\assets\images\mujeres-slider-ropa_d.jpg = ..\Talladita\assets\images\mujeres-slider-ropa_d.jpg
+		..\Talladita\assets\images\mujeres-slider-ropa_m.jpg = ..\Talladita\assets\images\mujeres-slider-ropa_m.jpg
+		..\Talladita\assets\images\talladita-logo.png = ..\Talladita\assets\images\talladita-logo.png
+		..\Talladita\assets\images\talladita-logo.xcf = ..\Talladita\assets\images\talladita-logo.xcf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +42,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5EF6C82-6E24-4DBD-8297-FAABEC46FE4C} = {87552EFE-A947-4EBB-8F22-DED35BB64118}
+		{B6658D0B-22C3-4FF9-B722-B511E2C1B5A2} = {F5EF6C82-6E24-4DBD-8297-FAABEC46FE4C}
+		{0D0AAAF6-CEAC-4BBB-A7AD-CF41F723FCF8} = {F5EF6C82-6E24-4DBD-8297-FAABEC46FE4C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9234040-E886-42BB-B1A3-0C56DF60D95F}
