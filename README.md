@@ -33,6 +33,8 @@ You can download the postman collection
 #  How to Test on february 2019
 Just download, there is a connection string with my azure database connection <)
 
+Send me your ip on my trello dashboard to access it if you want.
+
 #  Trello Dashboard
 https://trello.com/b/OMwJTxyU/store-api-challenge
 
