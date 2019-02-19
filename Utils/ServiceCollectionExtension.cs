@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace GFStore.Utils
 {
@@ -33,6 +34,11 @@ namespace GFStore.Utils
             services.AddAutoMapper();
             services.AddOptions();
             services.Configure<AppSettings>(configuration);
+            //Swagger documentation
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Talladita API", Version = "v1" });
+            });
             // configure jwt authentication
             // configure strongly typed settings objects
             var appSettingsSection = configuration.GetSection("AppSettings");
